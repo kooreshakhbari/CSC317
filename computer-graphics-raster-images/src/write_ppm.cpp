@@ -23,9 +23,16 @@ bool write_ppm(const std::string& filename,
   file << width << " " << height << endl;
   file << 255 << endl;
 
-  for (int i = 0; i < data.size() - 3; i += 3) {
-    file << (unsigned int)data[i] << " " << (unsigned int)data[i + 1] << " "
-         << (unsigned int)data[i + 2] << endl;
+  if (num_channels == 1) {
+    for (int i = 0; i < data.size() - 3; i++) {
+      file << (int)data[i] << " " << (int)data[i] << " " << (int)data[i]
+           << endl;
+    }
+  } else {
+    for (int i = 0; i < data.size() - 3; i += 3) {
+      file << (int)data[i] << " " << (int)data[i + 1] << " " << (int)data[i + 2]
+           << endl;
+    }
   }
 
   file.close();

@@ -12,6 +12,7 @@ void rgb_to_hsv(const double r, const double g, const double b, double &h,
   s = 0;
   v = 0;
   ////////////////////////////////////////////////////////////////////////////
+  // Got algo from https://en.wikipedia.org/wiki/HSL_and_HSV
   double M = max({r, g, b});
   double m = min({r, g, b});
   double c = M - m;

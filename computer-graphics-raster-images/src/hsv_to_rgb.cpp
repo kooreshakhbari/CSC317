@@ -11,6 +11,7 @@ void hsv_to_rgb(const double h, const double s, const double v, double &r,
   g = 0;
   b = 0;
   ////////////////////////////////////////////////////////////////////////////
+  // Got algo from https://en.wikipedia.org/wiki/HSL_and_HSV#HSV_to_RGB
   double C = s * v;
 
   double h_prime = h / 60;

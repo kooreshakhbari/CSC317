@@ -41,29 +41,219 @@ void demosaic(const std::vector<unsigned char>& bayer, const int& width,
       int r = 0;
       int g = 0;
       int b = 0;
+      int count_red = 0;
+      int count_green = 0;
+      int count_blue = 0;
       if (i % 2 == 0) {
         if (j % 2 == 0) {
           // sitting on G.
           // L/R is B
           // U/D is R
           // Diags are also G
-          channel = 1;
+
+          g = bayer[curr_index];
+          count_green = 1;
+
+          // Check L and R bounds for blue
+          if (j > 0) {
+            b += bayer[neighbors.left];
+            count_blue += 1;
+          }
+
+          if (j < width - 1) {
+            b += bayer[neighbors.right];
+            count_blue += 1;
+          }
+
+          // Check U and D for R
+
+          if (i > 0) {
+            r += bayer[neighbors.top];
+            count_red += 1;
+          }
+
+          if (i < height - 1) {
+            r += bayer[neighbors.bottom];
+            count_red += 1;
+          }
+
         } else {
           // Sitting on B
           // L/R is G
           // U/D is G
           // Diag is R
-          channel = 2;
+
+          b = bayer[curr_index];
+          count_blue = 1;
+
+          // Check L and R bounds for G
+          if (j > 0) {
+            g += bayer[neighbors.left];
+            count_green += 1;
+          }
+
+          if (j < width - 1) {
+            g += bayer[neighbors.right];
+            count_green += 1;
+          }
+
+          // Check U and D for G
+
+          if (i > 0) {
+            g += bayer[neighbors.top];
+            count_green += 1;
+          }
+
+          if (i < height - 1) {
+            g += bayer[neighbors.bottom];
+            count_green += 1;
+          }
+
+          // Check diag for R
+
+          if (i > 0 && j > 0) {
+            r += bayer[neighbors.top_left];
+            count_red += 1;
+          }
+
+          if (i > 0 && j < width - 1) {
+            r += bayer[neighbors.top_right];
+            count_red += 1;
+          }
+
+          if (i < height - 1 && j > 0) {
+            r += bayer[neighbors.bottom_left];
+            count_red += 1;
+          }
+          if (i < height - 1 && j < width - 1) {
+            r += bayer[neighbors.bottom_right];
+            count_red += 1;
+          }
         }
       } else {
         if (j % 2 == 0) {
           // R
-          channel = 0;
+          // L/R G
+          // U/D G
+          // Diag is B
+
+          r = bayer[curr_index];
+          count_red = 1;
+
+          // Check L and R bounds for G
+          if (j > 0) {
+            g += bayer[neighbors.left];
+            count_green += 1;
+          }
+
+          if (j < width - 1) {
+            g += bayer[neighbors.right];
+            count_green += 1;
+          }
+
+          // Check U and D for G
+
+          if (i > 0) {
+            g += bayer[neighbors.top];
+            count_green += 1;
+          }
+
+          if (i < height - 1) {
+            g += bayer[neighbors.bottom];
+            count_green += 1;
+          }
+
+          // Check diag for B
+
+          if (i > 0 && j > 0) {
+            b += bayer[neighbors.top_left];
+            count_blue += 1;
+          }
+
+          if (i > 0 && j < width - 1) {
+            b += bayer[neighbors.top_right];
+            count_blue += 1;
+          }
+
+          if (i < height - 1 && j > 0) {
+            b += bayer[neighbors.bottom_left];
+            count_blue += 1;
+          }
+          if (i < height - 1 && j < width - 1) {
+            b += bayer[neighbors.bottom_right];
+            count_blue += 1;
+          }
+
         } else {
           // G
-          channel = 1;
+          // L/R R
+          // U/D B
+          // Diag R
+
+          g = bayer[curr_index];
+          count_green = 1;
+
+          // Check L and R bounds for r
+          if (j > 0) {
+            r += bayer[neighbors.left];
+            count_red += 1;
+          }
+
+          if (j < width - 1) {
+            r += bayer[neighbors.right];
+            count_red += 1;
+          }
+
+          // Check U and D for B
+
+          if (i > 0) {
+            b += bayer[neighbors.top];
+            count_blue += 1;
+          }
+
+          if (i < height - 1) {
+            b += bayer[neighbors.bottom];
+            count_blue += 1;
+          }
+
+          // Check diag for B
+
+          if (i > 0 && j > 0) {
+            r += bayer[neighbors.top_left];
+            count_red += 1;
+          }
+
+          if (i > 0 && j < width - 1) {
+            r += bayer[neighbors.top_right];
+            count_red += 1;
+          }
+
+          if (i < height - 1 && j > 0) {
+            r += bayer[neighbors.bottom_left];
+            count_red += 1;
+          }
+          if (i < height - 1 && j < width - 1) {
+            r += bayer[neighbors.bottom_right];
+            count_red += 1;
+          }
         }
       }
+
+      if (count_red > 0) {
+        r = r / count_red;
+      }
+
+      if (count_green > 0) {
+        g = g / count_green;
+      }
+
+      if (count_blue > 0) {
+        b = b / count_blue;
+      }
+
+      rgb[3 * curr_index] = r;
+      rgb[3 * curr_index + 1] = g;
+      rgb[3 * curr_index + 2] = b;
     }
   }
 }

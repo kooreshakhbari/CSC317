@@ -215,27 +215,6 @@ void demosaic(const std::vector<unsigned char>& bayer, const int& width,
             b += bayer[neighbors.bottom];
             count_blue += 1;
           }
-
-          // Check diag for B
-
-          if (i > 0 && j > 0) {
-            r += bayer[neighbors.top_left];
-            count_red += 1;
-          }
-
-          if (i > 0 && j < width - 1) {
-            r += bayer[neighbors.top_right];
-            count_red += 1;
-          }
-
-          if (i < height - 1 && j > 0) {
-            r += bayer[neighbors.bottom_left];
-            count_red += 1;
-          }
-          if (i < height - 1 && j < width - 1) {
-            r += bayer[neighbors.bottom_right];
-            count_red += 1;
-          }
         }
       }
 

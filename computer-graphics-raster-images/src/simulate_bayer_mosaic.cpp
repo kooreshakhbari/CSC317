@@ -11,7 +11,7 @@ void simulate_bayer_mosaic(const std::vector<unsigned char>& rgb,
   // Add your code here
   ////////////////////////////////////////////////////////////////////////////
   // Pattern is gbgb
-  //            brbr
+  //            rgrg
   for (int i = 0; i < height; i++) {
     for (int j = 0; j < width; j++) {
       int curr_index = (width * i + j);

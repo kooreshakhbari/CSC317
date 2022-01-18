@@ -17,22 +17,22 @@ void simulate_bayer_mosaic(const std::vector<unsigned char>& rgb,
       int curr_index = (width * i + j);
       int channel = 0;
       // Get the color based on row and colmn being odd or even
-      // even row, even column = b
-      // even row, odd column = g
-      // odd row, even column = g
-      // odd row, odd column = r
+      // even row, even column = g
+      // even row, odd column = b
+      // odd row, even column = r
+      // odd row, odd column = g
 
       if (i % 2 == 0) {
         if (j % 2 == 0) {
-          channel = 2;
-        } else {
           channel = 1;
+        } else {
+          channel = 2;
         }
       } else {
         if (j % 2 == 0) {
-          channel = 1;
-        } else {
           channel = 0;
+        } else {
+          channel = 1;
         }
       }
 

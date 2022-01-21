@@ -22,15 +22,15 @@ bool Sphere::intersect(const Ray& ray, const double min_t, double& t,
 
   // 1 root and tangent
   if (discriminant == 0) {
-    t = (-b) / (2 * a);
+    t = (-1 * b) / (2 * a);
     if (t < min_t) {
       return false;
     }
   }
 
   if (discriminant > 0) {
-    double t1 = (-b + discriminant) / (2 * a);
-    double t2 = (-b - discriminant) / (2 * a);
+    double t1 = (-1 * b + sqrt(discriminant)) / (2 * a);
+    double t2 = (-1 * b - sqrt(discriminant)) / (2 * a);
 
     if (t1 < min_t && t2 < min_t) {
       return false;

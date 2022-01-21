@@ -22,7 +22,7 @@ bool first_hit(const Ray& ray, const double min_t,
         n = current_hit_n;
       }
     } else if (intersect_found && valid_t_found) {
-      if (current_t < t && t > min_t) {
+      if (current_t < t && current_t > min_t) {
         t = current_t;
         hit_id = i;
         n = current_hit_n;

@@ -1,5 +1,8 @@
 #include "viewing_ray.h"
 
+#include <iostream>
+
+using namespace std;
 #include <Eigen/Core>
 void viewing_ray(const Camera& camera, const int i, const int j,
                  const int width, const int height, Ray& ray) {
@@ -8,17 +11,18 @@ void viewing_ray(const Camera& camera, const int i, const int j,
   ////////////////////////////////////////////////////////////////////////////
 
   ray.origin = camera.e;
+  double u;
+  double v;
+  double w;
 
   // U
-  ray.direction[0] = camera.width * ((i + 0.5) / width) - camera.width / 2;
+  u = camera.width * ((j + 0.5) / width) - camera.width / 2;
   // V
-  ray.direction[1] = camera.height * ((j + 0.5) / height) - camera.height / 2;
-  ray.direction[2] = -1 * camera.d;
+  v = camera.height * ((i + 0.5) / height) - camera.height / 2;
+  // W
+  w = camera.d;
 
-  Eigen::Matrix3d camera_transformation_matrix;
-  camera_transformation_matrix << camera.u, camera.v, camera.w;
-
-  Eigen::Vector3d dot_product = camera_transformation_matrix * ray.direction;
-
-  ray.direction = dot_product;
+  ray.direction[0] = u * camera.u[0];
+  ray.direction[1] = -1 * v * camera.v[1];
+  ray.direction[2] = -1 * w * camera.w[2];
 }

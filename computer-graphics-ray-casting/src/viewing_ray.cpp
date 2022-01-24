@@ -10,11 +10,10 @@ void viewing_ray(const Camera& camera, const int i, const int j,
   // Add your code here
   ////////////////////////////////////////////////////////////////////////////
 
-  ray.origin = camera.e;
   double u;
   double v;
   double w;
-
+  ray.origin = camera.e;
   // U
   u = camera.width * ((j + 0.5) / width) - camera.width / 2;
   // V

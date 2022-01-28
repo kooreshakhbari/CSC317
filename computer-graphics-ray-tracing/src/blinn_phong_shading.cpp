@@ -28,6 +28,7 @@ Eigen::Vector3d blinn_phong_shading(
 
   double max_t = 0.0;
   for (std::shared_ptr<Light> light : lights) {
+    // All formulas are from the slides.
     int current_hit_id;
     double current_t;
     Eigen::Vector3d current_normal;

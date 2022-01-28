@@ -24,7 +24,8 @@ bool raycolor(const Ray& ray, const double min_t,
 
     // Created reflected ray
     Ray reflected_ray;
-    reflected_ray.origin = ray.origin + t * ray.direction;
+    // Prof mentioned moving the origin point up a small amount along the normal
+    reflected_ray.origin = ray.origin + t * ray.direction + 1e-10 * n;
     reflected_ray.direction = reflect(ray.direction, n);
     if (raycolor(reflected_ray, 0.0, objects, lights, num_recursive_calls + 1,
                  recursive_color)) {

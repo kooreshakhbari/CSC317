@@ -17,7 +17,8 @@ Eigen::Vector3d blinn_phong_shading(
 
   // Ray from the point on the surface to the light
   Ray l;
-  l.origin = ray.origin + t * ray.direction;
+  // Prof mentioned moving the origin point up a small amount along the normal
+  l.origin = ray.origin + t * ray.direction + 1e-10 * n;
 
   Eigen::Vector3d v = -(ray.direction).normalized();
 

@@ -13,7 +13,7 @@ bool raycolor(const Ray& ray, const double min_t,
   double t = 0.0;
   Eigen::Vector3d n;
   int hit_id;
-  if (num_recursive_calls > 10) {
+  if (num_recursive_calls > 15) {
     return false;
   }
 
@@ -21,6 +21,8 @@ bool raycolor(const Ray& ray, const double min_t,
     rgb = blinn_phong_shading(ray, hit_id, t, n, objects, lights);
 
     Eigen::Vector3d recursive_color;
+
+    // Created reflected ray
     Ray reflected_ray;
     reflected_ray.origin = ray.origin + t * ray.direction;
     reflected_ray.direction = reflect(ray.direction, n);

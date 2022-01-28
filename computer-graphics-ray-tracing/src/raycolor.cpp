@@ -13,7 +13,7 @@ bool raycolor(const Ray& ray, const double min_t,
   double t = 0.0;
   Eigen::Vector3d n;
   int hit_id;
-  if (num_recursive_calls > 15) {
+  if (num_recursive_calls > 10) {
     return false;
   }
 

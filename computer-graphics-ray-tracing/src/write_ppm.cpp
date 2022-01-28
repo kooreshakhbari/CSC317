@@ -24,12 +24,12 @@ bool write_ppm(const std::string& filename,
   file << 255 << endl;
 
   if (num_channels == 1) {
-    for (int i = 0; i < data.size() - 3; i++) {
+    for (int i = 0; i < data.size(); i++) {
       file << (int)data[i] << " " << (int)data[i] << " " << (int)data[i]
            << endl;
     }
   } else {
-    for (int i = 0; i < data.size() - 3; i += 3) {
+    for (int i = 0; i < data.size(); i += 3) {
       file << (int)data[i] << " " << (int)data[i + 1] << " " << (int)data[i + 2]
            << endl;
     }

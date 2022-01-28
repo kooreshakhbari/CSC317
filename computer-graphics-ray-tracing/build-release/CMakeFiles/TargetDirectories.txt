@@ -1,0 +1,4 @@
+/home/kooresh/CSC317/computer-graphics-ray-tracing/build-release/CMakeFiles/rebuild_cache.dir
+/home/kooresh/CSC317/computer-graphics-ray-tracing/build-release/CMakeFiles/edit_cache.dir
+/home/kooresh/CSC317/computer-graphics-ray-tracing/build-release/CMakeFiles/hw2.dir
+/home/kooresh/CSC317/computer-graphics-ray-tracing/build-release/CMakeFiles/raytracing.dir

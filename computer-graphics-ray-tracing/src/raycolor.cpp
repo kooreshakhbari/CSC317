@@ -28,7 +28,8 @@ bool raycolor(const Ray& ray, const double min_t,
     reflected_ray.direction = reflect(ray.direction, n);
     if (raycolor(ray, min_t, objects, lights, num_recursive_calls + 1,
                  recursive_color)) {
-      rgb += recursive_color;
+      rgb += (objects[hit_id]->material->km.array() * recursive_color.array())
+                 .matrix();
     }
   } else {
     return false;

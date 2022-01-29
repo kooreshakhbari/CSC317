@@ -12,9 +12,9 @@ Eigen::Vector3d reflect(const Eigen::Vector3d& in, const Eigen::Vector3d& n) {
 
   // On the slides there is a negative here but for some reason that messes up
   // the picture
-  // reflected = -(identity_3d - Eigen::Matrix3d(2 * n * n.transpose())) * in;
-  reflected = (identity_3d - Eigen::Matrix3d(2 * n * n.transpose())) * in;
-  reflected.normalized();
+  // reflected = -((identity_3d - Eigen::Matrix3d(2 * n * n.transpose())) * in).normalized();
+  reflected = ((identity_3d - Eigen::Matrix3d(2 * n * n.transpose())) * in)
+                  .normalized();
   return reflected;
   ////////////////////////////////////////////////////////////////////////////
 }

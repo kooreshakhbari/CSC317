@@ -14,6 +14,7 @@ Eigen::Vector3d blinn_phong_shading(
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code here:
   // L = ka + kdmax(0, nTray) + ksmax(0, cos(n, h))^p
+  // Steps from the lecture slides.
 
   // Ray from the point on the surface to the light
   Ray l;
@@ -24,10 +25,10 @@ Eigen::Vector3d blinn_phong_shading(
 
   Eigen::Vector3d rgb;
 
-  // Add ambient light
+  // Ambient contribution
   rgb = 0.1 * objects[hit_id]->material->ka;
 
-  double max_t = 0.0;
+  double max_t;
   for (std::shared_ptr<Light> light : lights) {
     // All formulas are from the slides.
     int current_hit_id;

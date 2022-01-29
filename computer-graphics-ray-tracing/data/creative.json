@@ -18,11 +18,11 @@
       "phong_exponent": 1000
     },
     {
-      "name": "Lambertian blue",
-      "ka": [0.2, 0.3, 0.8],
-      "kd": [0.2, 0.3, 0.8],
-      "ks": [0.1,0.1,0.1],
-      "km": [0.3,0.3,0.3],
+      "name": "plane back",
+      "ka": [1, 0.5, 0.2],
+      "kd": [0.3, 0.3, 0.8],
+      "ks": [1,0.1,0.1],
+      "km": [1,1,1],
       "phong_exponent": 55
     },
     {
@@ -180,7 +180,7 @@
     },
     {
       "type": "plane",
-      "material": "Lambertian blue",
+      "material": "plane back",
       "point": [0.5,-0.5,0],
       "normal": [0,0,1]
     }

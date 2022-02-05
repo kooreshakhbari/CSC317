@@ -1,5 +1,6 @@
 #include "ray_intersect_triangle.h"
 
+#include <Eigen/Dense>
 bool ray_intersect_triangle(const Ray& ray, const Eigen::RowVector3d& A,
                             const Eigen::RowVector3d& B,
                             const Eigen::RowVector3d& C, const double min_t,
@@ -26,7 +27,7 @@ bool ray_intersect_triangle(const Ray& ray, const Eigen::RowVector3d& A,
 
   // Solve the linear system
   Eigen::Vector3d answer =
-      left_matrix.colPivHouseholderQr().solve(ray.origin - A);
+      left_matrix.colPivHouseholderQr().solve(ray.origin - A.transpose());
 
   // Extract answers
   double alpha = answer[0];

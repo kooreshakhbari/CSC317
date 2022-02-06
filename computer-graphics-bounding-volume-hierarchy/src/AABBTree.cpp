@@ -3,7 +3,7 @@
 #include <algorithm>
 
 #include "insert_box_into_box.h"
-
+using namespace std;
 int longest_axis_id = -1;
 
 bool sort_function(std::shared_ptr<Object> &obj1,
@@ -12,12 +12,16 @@ bool sort_function(std::shared_ptr<Object> &obj1,
          obj2->box.center()[longest_axis_id];
 };
 
-AABBTree::AABBTree(const std::vector<std::shared_ptr<Object> > &objects,
+AABBTree::AABBTree(const std::vector<std::shared_ptr<Object>> &objects,
                    int a_depth)
     : depth(std::move(a_depth)), num_leaves(objects.size()) {
   ////////////////////////////////////////////////////////////////////////////
   // Add your code here
   ////////////////////////////////////////////////////////////////////////////
+
+  // Right and left object vectors
+  std::vector<std::shared_ptr<Object>> lo;
+  std::vector<std::shared_ptr<Object>> ro;
 
   if (num_leaves == 1) {
     this->left = objects[0];
@@ -42,7 +46,7 @@ AABBTree::AABBTree(const std::vector<std::shared_ptr<Object> > &objects,
       this->box.max_corner - this->box.min_corner;
 
   int longest_axis_id = -1;
-  int longest_axis_length = -1 * std::numeric_limits<double>::infinity();
+  double longest_axis_length = -1 * std::numeric_limits<double>::infinity();
 
   for (int i = 0; i < length_all_axis.size(); i++) {
     if (length_all_axis[i] > longest_axis_length) {
@@ -50,6 +54,16 @@ AABBTree::AABBTree(const std::vector<std::shared_ptr<Object> > &objects,
     }
   }
 
-  std::vector<std::shared_ptr<Object> > sorted_obj = objects;
+  // Sort the objects based on the axis from smallest to biggest
+  std::vector<std::shared_ptr<Object>> sorted_obj = objects;
   sort(sorted_obj.begin(), sorted_obj.end(), sort_function);
+
+  int mid = num_leaves / 2;
+  // Split in the middle
+  lo.insert(lo.begin(), sorted_obj.begin(), sorted_obj.begin() + mid);
+  ro.insert(ro.begin(), sorted_obj.begin() + mid, sorted_obj.end());
+
+  // Insert
+  this->left = std::make_shared<AABBTree>(lo, a_depth + 1);
+  this->right = std::make_shared<AABBTree>(ro, a_depth + 1);
 }

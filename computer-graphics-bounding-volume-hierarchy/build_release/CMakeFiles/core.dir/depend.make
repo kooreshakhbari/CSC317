@@ -1817,6 +1817,8 @@ CMakeFiles/core.dir/src/ray_intersect_triangle_mesh_brute_force.cpp.o: ../libigl
 CMakeFiles/core.dir/src/ray_intersect_triangle_mesh_brute_force.cpp.o: ../libigl/external/eigen/Eigen/src/plugins/MatrixCwiseUnaryOps.h
 CMakeFiles/core.dir/src/ray_intersect_triangle_mesh_brute_force.cpp.o: ../src/ray_intersect_triangle_mesh_brute_force.cpp
 
+CMakeFiles/core.dir/src/triangle_triangle_intersection.cpp.o: ../include/Ray.h
+CMakeFiles/core.dir/src/triangle_triangle_intersection.cpp.o: ../include/ray_intersect_triangle.h
 CMakeFiles/core.dir/src/triangle_triangle_intersection.cpp.o: ../include/triangle_triangle_intersection.h
 CMakeFiles/core.dir/src/triangle_triangle_intersection.cpp.o: ../libigl/external/eigen/Eigen/Core
 CMakeFiles/core.dir/src/triangle_triangle_intersection.cpp.o: ../libigl/external/eigen/Eigen/src/Core/Array.h

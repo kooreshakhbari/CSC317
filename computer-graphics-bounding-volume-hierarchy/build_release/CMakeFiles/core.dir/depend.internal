@@ -1818,6 +1818,8 @@ CMakeFiles/core.dir/src/ray_intersect_triangle_mesh_brute_force.cpp.o
  ../libigl/external/eigen/Eigen/src/plugins/MatrixCwiseUnaryOps.h
  /home/kooresh/CSC317/computer-graphics-bounding-volume-hierarchy/src/ray_intersect_triangle_mesh_brute_force.cpp
 CMakeFiles/core.dir/src/triangle_triangle_intersection.cpp.o
+ ../include/Ray.h
+ ../include/ray_intersect_triangle.h
  ../include/triangle_triangle_intersection.h
  ../libigl/external/eigen/Eigen/Core
  ../libigl/external/eigen/Eigen/src/Core/Array.h

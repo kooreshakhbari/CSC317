@@ -43,7 +43,7 @@ bool ray_intersect_triangle(const Ray& ray, const Eigen::RowVector3d& A,
   if (potential_t < min_t) {
     return false;
   }
-
+  t = potential_t;
   return true;
   ////////////////////////////////////////////////////////////////////////////
 }

@@ -26,8 +26,7 @@ bool ray_intersect_triangle(const Ray& ray, const Eigen::RowVector3d& A,
   if (left_matrix.determinant() == 0) return false;
 
   // Solve the linear system
-  Eigen::Vector3d answer =
-      left_matrix.colPivHouseholderQr().solve(ray.origin - A.transpose());
+  Eigen::Vector3d answer = left_matrix.inverse() * (ray.origin - A.transpose());
 
   // Extract answers
   double alpha = answer[0];

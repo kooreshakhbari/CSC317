@@ -1,13 +1,17 @@
 #include "AABBTree.h"
 
 #include <algorithm>
+#include <iostream>
 
 #include "insert_box_into_box.h"
+
 using namespace std;
-int longest_axis_id = -1;
+int longest_axis_id;
 
 bool sort_function(std::shared_ptr<Object> &obj1,
                    std::shared_ptr<Object> &obj2) {
+  cout << "END" << endl;
+  cout << longest_axis_id << endl;
   return obj1->box.center()[longest_axis_id] <
          obj2->box.center()[longest_axis_id];
 };
@@ -54,9 +58,15 @@ AABBTree::AABBTree(const std::vector<std::shared_ptr<Object>> &objects,
     }
   }
 
+  auto compare_function = [&longest_axis_id](std::shared_ptr<Object> &obj1,
+                                             std::shared_ptr<Object> &obj2) {
+    return obj1->box.center()[longest_axis_id] <
+           obj2->box.center()[longest_axis_id];
+  };
+
   // Sort the objects based on the axis from smallest to biggest
   std::vector<std::shared_ptr<Object>> sorted_obj = objects;
-  sort(sorted_obj.begin(), sorted_obj.end(), sort_function);
+  std::sort(sorted_obj.begin(), sorted_obj.end(), compare_function);
 
   int mid = num_leaves / 2;
   // Split in the middle

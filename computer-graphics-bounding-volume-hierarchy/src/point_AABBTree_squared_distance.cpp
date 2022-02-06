@@ -38,6 +38,8 @@ bool point_AABBTree_squared_distance(const Eigen::RowVector3d& query,
 
   while (!p_queue.empty()) {
     priority_pair curr_min_element = p_queue.top();
+    // pop at the start of the loop else if you pop at the end it all breaks...
+    p_queue.pop();
 
     // Typecast
     std::shared_ptr<AABBTree> top_node =
@@ -47,29 +49,21 @@ bool point_AABBTree_squared_distance(const Eigen::RowVector3d& query,
     if (!top_node) {
       if (curr_min_element.first >= min_sqrd) {
         sqrd = curr_min_element.first;
-        descendant = top_node;
+        descendant = curr_min_element.second;
         return true;
       }
       continue;
     }
 
-    if (top_node->right) {
-      distance = point_box_squared_distance(query, top_node->right->box);
-      if (distance < max_sqrd && distance >= min_sqrd) {
-        p_queue.push(make_pair(distance, top_node->right));
-      }
-    }
-
     if (top_node->left) {
-      distance = point_box_squared_distance(query, top_node->left->box);
-      if (distance < max_sqrd && distance >= min_sqrd) {
-        p_queue.push(make_pair(distance, top_node->left));
-      }
+      calculate_insert_to_q(p_queue, top_node->left, min_sqrd, max_sqrd, query);
     }
 
-    p_queue.pop();
+    if (top_node->right) {
+      calculate_insert_to_q(p_queue, top_node->right, min_sqrd, max_sqrd,
+                            query);
+    }
   }
-  sqrd = 0;
   return false;
   ////////////////////////////////////////////////////////////////////////////
 }

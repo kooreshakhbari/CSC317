@@ -1,0 +1,1 @@
+/usr/bin/c++   -fPIC -O3 -DNDEBUG   CMakeFiles/intersections.dir/intersections.cpp.o  -o intersections  libcore.a /usr/lib/x86_64-linux-gnu/libOpenGL.so glad/libglad.a glfw/src/libglfw3.a -lpthread /usr/lib/x86_64-linux-gnu/librt.so -lm -ldl 

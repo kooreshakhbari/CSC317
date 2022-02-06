@@ -18,5 +18,6 @@ void nearest_neighbor_brute_force(const Eigen::MatrixXd& points,
       I = i;
     }
   }
+  sqrD = best_distance;
   ////////////////////////////////////////////////////////////////////////////
 }

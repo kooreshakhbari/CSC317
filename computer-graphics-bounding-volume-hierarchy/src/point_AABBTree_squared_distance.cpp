@@ -4,6 +4,19 @@
 using namespace std;
 
 typedef pair<double, std::shared_ptr<Object>> priority_pair;
+
+// Helper function to calculate distance and enter into queue
+void calculate_insert_to_q(priority_queue<priority_pair, vector<priority_pair>,
+                                          greater<priority_pair>>& p_queue,
+                           std::shared_ptr<Object>& node, const double min_sqrd,
+                           const double max_sqrd,
+                           const Eigen::RowVector3d& query) {
+  double distance = point_box_squared_distance(query, node->box);
+  if (distance < max_sqrd && distance >= min_sqrd) {
+    p_queue.push(make_pair(distance, node));
+  }
+}
+
 bool point_AABBTree_squared_distance(const Eigen::RowVector3d& query,
                                      const std::shared_ptr<AABBTree>& root,
                                      const double min_sqrd,

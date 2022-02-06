@@ -4,10 +4,13 @@
 
 #include "insert_box_into_box.h"
 
-bool sort_fucntion(std::shared_ptr<Object> &obj1, std::shared_ptr<Object> &obj2,
-                   int axis_id) {
-  return obj1->box.center()[axis_id] < obj2->box.center()[axis_id];
-}
+int longest_axis_id = -1;
+
+bool sort_function(std::shared_ptr<Object> &obj1,
+                   std::shared_ptr<Object> &obj2) {
+  return obj1->box.center()[longest_axis_id] <
+         obj2->box.center()[longest_axis_id];
+};
 
 AABBTree::AABBTree(const std::vector<std::shared_ptr<Object> > &objects,
                    int a_depth)
@@ -48,6 +51,5 @@ AABBTree::AABBTree(const std::vector<std::shared_ptr<Object> > &objects,
   }
 
   std::vector<std::shared_ptr<Object> > sorted_obj = objects;
-  sort(sorted_obj.begin(), sorted_obj.end(),
-       sort_fucntion(axis_id = longest_axis_id));
+  sort(sorted_obj.begin(), sorted_obj.end(), sort_function);
 }

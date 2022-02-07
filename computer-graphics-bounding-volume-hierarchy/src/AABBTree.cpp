@@ -1,9 +1,8 @@
 #include "AABBTree.h"
 
-#include <bits/stdc++.h>
-
 #include <algorithm>
 #include <iostream>
+#include <queue>  // std::priority_queue
 
 #include "insert_box_into_box.h"
 using namespace std;

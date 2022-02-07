@@ -6,19 +6,65 @@
 
 #IncludeRegexTransform: 
 
+../include/AABBTree.h
+BoundingBox.h
+../include/BoundingBox.h
+Object.h
+../include/Object.h
+Eigen/Core
+-
+memory
+-
+vector
+-
+ray_intersect_box.h
+../include/ray_intersect_box.h
+point_box_squared_distance.h
+../include/point_box_squared_distance.h
+
+../include/BoundingBox.h
+Eigen/Core
+-
+
+../include/Object.h
+BoundingBox.h
+../include/BoundingBox.h
+Eigen/Core
+-
+memory
+-
+
 ../include/Ray.h
 Eigen/Core
 -
 utility
 -
 
-../include/ray_intersect_triangle.h
-Ray.h
-../include/Ray.h
+../include/box_box_intersect.h
+BoundingBox.h
+../include/BoundingBox.h
+
+../include/find_all_intersecting_pairs_using_AABBTrees.h
+AABBTree.h
+../include/AABBTree.h
+memory
+-
+utility
+-
+vector
+-
+
+../include/point_box_squared_distance.h
+BoundingBox.h
+../include/BoundingBox.h
 Eigen/Core
 -
 
-../include/triangle_triangle_intersection.h
+../include/ray_intersect_box.h
+BoundingBox.h
+../include/BoundingBox.h
+Ray.h
+../include/Ray.h
 Eigen/Core
 -
 
@@ -686,9 +732,13 @@ cstdint
 
 ../libigl/external/eigen/Eigen/src/plugins/MatrixCwiseUnaryOps.h
 
-/home/kooresh/CSC317/computer-graphics-bounding-volume-hierarchy/src/triangle_triangle_intersection.cpp
-triangle_triangle_intersection.h
-/home/kooresh/CSC317/computer-graphics-bounding-volume-hierarchy/src/triangle_triangle_intersection.h
-ray_intersect_triangle.h
-/home/kooresh/CSC317/computer-graphics-bounding-volume-hierarchy/src/ray_intersect_triangle.h
+/home/kooresh/CSC317/computer-graphics-bounding-volume-hierarchy/src/find_all_intersecting_pairs_using_AABBTrees.cpp
+find_all_intersecting_pairs_using_AABBTrees.h
+/home/kooresh/CSC317/computer-graphics-bounding-volume-hierarchy/src/find_all_intersecting_pairs_using_AABBTrees.h
+box_box_intersect.h
+/home/kooresh/CSC317/computer-graphics-bounding-volume-hierarchy/src/box_box_intersect.h
+algorithm
+-
+list
+-
 

@@ -299,7 +299,9 @@ CMakeFiles/core.dir/src/AABBTree_ray_intersect.cpp.o: ../libigl/external/eigen/E
 CMakeFiles/core.dir/src/AABBTree_ray_intersect.cpp.o: ../src/AABBTree_ray_intersect.cpp
 
 CMakeFiles/core.dir/src/box_box_intersect.cpp.o: ../include/BoundingBox.h
+CMakeFiles/core.dir/src/box_box_intersect.cpp.o: ../include/Ray.h
 CMakeFiles/core.dir/src/box_box_intersect.cpp.o: ../include/box_box_intersect.h
+CMakeFiles/core.dir/src/box_box_intersect.cpp.o: ../include/ray_intersect_box.h
 CMakeFiles/core.dir/src/box_box_intersect.cpp.o: ../libigl/external/eigen/Eigen/Core
 CMakeFiles/core.dir/src/box_box_intersect.cpp.o: ../libigl/external/eigen/Eigen/src/Core/Array.h
 CMakeFiles/core.dir/src/box_box_intersect.cpp.o: ../libigl/external/eigen/Eigen/src/Core/ArrayBase.h

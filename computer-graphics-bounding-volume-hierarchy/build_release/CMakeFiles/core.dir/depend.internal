@@ -300,7 +300,9 @@ CMakeFiles/core.dir/src/AABBTree_ray_intersect.cpp.o
  /home/kooresh/CSC317/computer-graphics-bounding-volume-hierarchy/src/AABBTree_ray_intersect.cpp
 CMakeFiles/core.dir/src/box_box_intersect.cpp.o
  ../include/BoundingBox.h
+ ../include/Ray.h
  ../include/box_box_intersect.h
+ ../include/ray_intersect_box.h
  ../libigl/external/eigen/Eigen/Core
  ../libigl/external/eigen/Eigen/src/Core/Array.h
  ../libigl/external/eigen/Eigen/src/Core/ArrayBase.h

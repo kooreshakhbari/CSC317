@@ -26,6 +26,9 @@ bool ray_intersect_triangle(const Ray& ray, const Eigen::RowVector3d& A,
   if (left_matrix.determinant() == 0) return false;
 
   // Solve the linear system
+  // Eigen::Vector3d answer =
+  //     left_matrix.colPivHouseholderQr().solve(ray.origin - A.transpose());
+  // Faster
   Eigen::Vector3d answer = left_matrix.inverse() * (ray.origin - A.transpose());
 
   // Extract answers
@@ -39,7 +42,7 @@ bool ray_intersect_triangle(const Ray& ray, const Eigen::RowVector3d& A,
   }
 
   // Check that you are in the distance
-  if (potential_t < min_t) {
+  if (potential_t < min_t || potential_t > max_t) {
     return false;
   }
   t = potential_t;

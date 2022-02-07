@@ -40,7 +40,7 @@ bool triangle_triangle_intersection(const Eigen::RowVector3d& A0,
     return true;
   }
 
-  Ray B_edge_3(B1, (B2 - B0));
+  Ray B_edge_3(B1, (B2 - B1));
   if (ray_intersect_triangle(B_edge_3, A0, A1, A2, 0.0, 1.0, t)) {
     return true;
   }

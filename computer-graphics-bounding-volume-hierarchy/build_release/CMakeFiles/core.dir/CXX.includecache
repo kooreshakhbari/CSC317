@@ -40,21 +40,9 @@ Eigen/Core
 utility
 -
 
-../include/box_box_intersect.h
+../include/insert_box_into_box.h
 BoundingBox.h
 ../include/BoundingBox.h
-
-../include/find_all_intersecting_pairs_using_AABBTrees.h
-AABBTree.h
-../include/AABBTree.h
-memory
--
-utility
--
-vector
--
-
-../include/nearest_neighbor_brute_force.h
 Eigen/Core
 -
 
@@ -736,19 +724,15 @@ cstdint
 
 ../libigl/external/eigen/Eigen/src/plugins/MatrixCwiseUnaryOps.h
 
-/home/kooresh/CSC317/computer-graphics-bounding-volume-hierarchy/src/find_all_intersecting_pairs_using_AABBTrees.cpp
-find_all_intersecting_pairs_using_AABBTrees.h
-/home/kooresh/CSC317/computer-graphics-bounding-volume-hierarchy/src/find_all_intersecting_pairs_using_AABBTrees.h
-box_box_intersect.h
-/home/kooresh/CSC317/computer-graphics-bounding-volume-hierarchy/src/box_box_intersect.h
+/home/kooresh/CSC317/computer-graphics-bounding-volume-hierarchy/src/AABBTree.cpp
+AABBTree.h
+/home/kooresh/CSC317/computer-graphics-bounding-volume-hierarchy/src/AABBTree.h
 algorithm
 -
-list
+iostream
 -
-
-/home/kooresh/CSC317/computer-graphics-bounding-volume-hierarchy/src/nearest_neighbor_brute_force.cpp
-nearest_neighbor_brute_force.h
-/home/kooresh/CSC317/computer-graphics-bounding-volume-hierarchy/src/nearest_neighbor_brute_force.h
-limits
+queue
 -
+insert_box_into_box.h
+/home/kooresh/CSC317/computer-graphics-bounding-volume-hierarchy/src/insert_box_into_box.h
 

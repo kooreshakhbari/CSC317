@@ -21,6 +21,7 @@ void find_all_intersecting_pairs_using_AABBTrees(
     const std::shared_ptr<AABBTree>& rootB,
     std::vector<std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>>>&
         leaf_pairs) {
+  // Create the list as suggested
   list<list_pair> list_pairs;
 
   if (box_box_intersect(rootA->box, rootB->box)) {
@@ -45,6 +46,7 @@ void find_all_intersecting_pairs_using_AABBTrees(
       continue;
     }
 
+    // None are leaves therefore insert every combination possible
     if (first_node && second_node) {
       if (first_node->left && second_node->right) {
         check_and_insert(first_node->left, second_node->right, list_pairs);
@@ -64,6 +66,7 @@ void find_all_intersecting_pairs_using_AABBTrees(
       continue;
     }
 
+    // First node is a leaf.
     if (!first_node) {
       if (second_node->left) {
         check_and_insert(front_list.first, second_node->left, list_pairs);
@@ -73,6 +76,7 @@ void find_all_intersecting_pairs_using_AABBTrees(
         check_and_insert(front_list.first, second_node->right, list_pairs);
       }
     }
+    // Second node is a leaf
     if (!second_node) {
       if (first_node->left) {
         check_and_insert(first_node->left, front_list.second, list_pairs);

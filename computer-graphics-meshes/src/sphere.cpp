@@ -1,7 +1,7 @@
 #include "sphere.h"
 #include <iostream>
 #include <math.h>
-
+using namespace std;
 void sphere(
   const int num_faces_u,
   const int num_faces_v,
@@ -30,20 +30,21 @@ void sphere(
 
 
   for (int u=0; u <= num_faces_u; u++) {
-    double theta =  M_PI * u / num_faces_u;
+    double theta =  u * (M_PI  / num_faces_u);
     for (int v=0; v <= num_faces_v; v++) {
-      double phi = 2 * M_PI * v / num_faces_v;
+      double phi = v * (2 * M_PI  / num_faces_v);
       
       // Formula from slides
       double x = cos(phi) * sin(theta);
       double y = sin(phi) * sin(theta);
       double z = cos(theta);
-      double UV_X = (v/total_v);
-      double UV_Y =  (u/total_u);
+      double para_x = (double) v/total_v;
+      double para_y =  (double) u/total_u;
+
       int index = total_v * u + v;
 
       V.row(index) << x, y, z;
-      UV.row(index) << UV_X, UV_Y;
+      UV.row(index) << para_x, para_y;
       NV.row(index) = V.row(index);
 
       if (u == num_faces_u || v == num_faces_v)

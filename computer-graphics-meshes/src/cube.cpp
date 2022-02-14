@@ -28,12 +28,12 @@ void cube(
   
   F.resize(6,4);
 
-  F << 0, 2, 4, 6, // Bottom
+  F << 0, 1, 4, 5, // Bottom
        0, 1, 2, 3, // Left
        4, 5, 6, 7, // Right
-       2, 3, 6, 7, // Front
-       0, 1, 4, 5, // Back
-       1, 3, 5, 7; // Top
+       1, 3, 5, 7, // Front
+       0, 2, 4, 6, // Back
+       2, 3, 6, 7; // Top
        
        
 
@@ -71,22 +71,22 @@ void cube(
   
   NV.resize(6,3);
 
-  NV << 0, 0, -1, // Bottom WHITE 0
-        1, 0, 0, // Left GREEN 4 
-        -1, 0, 0, // Right ORANGE 5
-        0, 1, 0, // Front BLUE 1
-        0, -1, 0, // Back RED 2
-        0, 0, 1; // Top YELLOW 3
+  NV << 0, -1, 0, // Bottom WHITE 0
+        1, 0, 0, // Left GREEN 1 
+        -1, 0, 0, // Right ORANGE 2
+        0, 0, 1, // Front BLUE 3
+        0, 0, -1, // Back RED 4
+        0, 1, 0; // Top YELLOW 5
 
 
   NF.resize(6,4);
 
   NF << 0, 0, 0, 0, // Bottom WHITE 
-        4, 4, 4, 4, // Left GREEN
-        5, 5, 5, 5, // Right ORANGE
-        1, 1, 1, 1, // Front BLUE
-        2, 2, 2, 2, // Back RED
-        3, 3, 3, 3; // Top YELLOW
+        1, 1, 1, 1, // Left GREEN
+        2, 2, 2, 2, // Right ORANGE
+        3, 3, 3, 3, // Front BLUE
+        4, 4, 4, 4, // Back RED
+        5, 5, 5, 5; // Top YELLOW
         
         
         

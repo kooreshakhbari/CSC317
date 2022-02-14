@@ -37,12 +37,14 @@ void sphere(
       // Formula from slides
       double x = cos(phi) * sin(theta);
       double y = sin(phi) * sin(theta);
-      double z = -1 * cos(theta);
-
+      double z = cos(theta);
+      
       int index = total_v * u + v;
 
       // V.row(index) << x, z, y;
-      V.row(index) << x, y, z;
+      V.row(index) << y, z, x;
+      // Multiply by -1 to make the default start view like the gif
+      V.row(index) *= -1;
       UV.row(index) << (double) v/total_v, (double) u/total_u;
       NV.row(index) = V.row(index).normalized();
 

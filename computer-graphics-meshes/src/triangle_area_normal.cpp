@@ -13,10 +13,10 @@ Eigen::RowVector3d triangle_area_normal(
   Eigen::Vector3d t1;
   Eigen::Vector3d t2;
 
-  t1 = b.transpose() - a.transpose();
-  t2 = c.transpose() - a.transpose();
+  t1 = b - a;
+  t2 = c - a;
 
-  Eigen::RowVector3d normal = t1.cross(t2) / (t1.cross(t2)).norm();
+  Eigen::RowVector3d normal = t1.cross(t2) / 2.0;
   
 
   return normal;

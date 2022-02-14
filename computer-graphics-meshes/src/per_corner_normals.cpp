@@ -19,7 +19,7 @@ void per_corner_normals(
   std::vector<std::vector<int> > VF;
   vertex_triangle_adjacency(F, V.rows(), VF);
 
-  double threshold = cos(corner_threshold * M_PI / 180.0);
+  double threshold = cos((corner_threshold * M_PI) / 180.0);
 
   for (int i = 0; i < F.rows(); i++) {
     Eigen::RowVector3d main_n (0,0,0);

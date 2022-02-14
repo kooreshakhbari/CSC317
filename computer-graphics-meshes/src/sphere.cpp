@@ -54,8 +54,8 @@ void sphere(
         // Calculate the indexes
         int index_1 = v + u * total_v;
         int index_2 = v + (u+1) * total_v;
-        int index_3 = index_2 + 1;
-        int index_4 = index_1 + 1;
+        int index_3 = v + (u+1) * total_v + 1;
+        int index_4 = v + u * total_v + 1;
 
         Eigen::Vector4i indices;
         indices << index_1, index_2, index_3, index_4;

@@ -29,21 +29,25 @@ void sphere(
   NF.resize(total_faces, 4);
 
 
-  for (int u=0; u < num_faces_u; u++) {
-    double theta =  M_PI * (u/ num_faces_u);
-    for (int v=0; v < num_faces_v; v++) {
+  for (int u=0; u <= num_faces_u; u++) {
+    double theta =  M_PI * u / num_faces_u;
+    for (int v=0; v <= num_faces_v; v++) {
       double phi = 2 * M_PI * v / num_faces_v;
       
       // Formula from slides
       double x = cos(phi) * sin(theta);
       double y = sin(phi) * sin(theta);
       double z = cos(theta);
-
+      double UV_X = (v/total_v);
+      double UV_Y =  (u/total_u);
       int index = total_v * u + v;
 
       V.row(index) << x, y, z;
-      UV.row(index) << (u/total_u), (v/total_v);
-      NV.row(index) << V.row(index).normalized();
+      UV.row(index) << UV_X, UV_Y;
+      NV.row(index) = V.row(index);
+
+      if (u == num_faces_u || v == num_faces_v)
+        continue;
 
       index = v + u * num_faces_v;
 
@@ -52,9 +56,11 @@ void sphere(
       int index_3 = v + (u+1) * total_v + 1;
       int index_4 = v + u * total_v + 1;
 
-      NF.row(index) << index_1, index_2, index_3, index_4;
-      UF.row(index) << index_1, index_2, index_3, index_4;
-      F.row(index) << index_1, index_2, index_3, index_4;
+      Eigen::Vector4i indices;
+      indices << index_1, index_2, index_3, index_4;
+      NF.row(index) = indices;
+      UF.row(index) = indices;
+      F.row(index) = indices;
 
 
     }

@@ -42,6 +42,7 @@ void sphere(
       int index = total_v * u + v;
 
       // V.row(index) << x, z, y;
+      // Played around with every combination till globe spun and looked proper
       V.row(index) << y, z, x;
       // Multiply by -1 to make the default start view like the gif
       V.row(index) *= -1;
@@ -53,6 +54,11 @@ void sphere(
       if (u != num_faces_u && v != num_faces_v) {
         index = v + u * num_faces_v;
 
+
+        // int index_1 = v*total_u + u;
+        // int index_2 = (v+1) * total_u + u;
+        // int index_3 = index_2 + 1;
+        // int index_4 = index_1 + 1;
         // Calculate the indexes
         int index_1 = v + u * total_v;
         int index_2 = v + (u+1) * total_v;

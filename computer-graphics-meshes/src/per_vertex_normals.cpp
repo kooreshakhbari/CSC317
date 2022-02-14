@@ -11,6 +11,8 @@ void per_vertex_normals(
   // Add your code here:
   ////////////////////////////////////////////////////////////////////////////
 
+  // Go through each vertex and check which faces are connected to it
+  // Find all associated normals
   for (int v=0; v < V.rows(); v++) {
 
     Eigen::RowVector3d n (0,0,0);

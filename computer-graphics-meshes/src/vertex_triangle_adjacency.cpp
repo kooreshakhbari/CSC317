@@ -9,5 +9,12 @@ void vertex_triangle_adjacency(
   ////////////////////////////////////////////////////////////////////////////
   // Add your code here:
   ////////////////////////////////////////////////////////////////////////////
+
+  for (int i=0; i < F.rows(); i++) {
+    for (int j=0; j < F.cols(); j++) {
+      int vertex_index = F(i, j);
+      VF[vertex_index].push_back(i);
+    }
+  }
 }
 

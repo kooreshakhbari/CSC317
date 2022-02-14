@@ -39,13 +39,11 @@ void sphere(
       double y = sin(phi) * sin(theta);
       double z = -1 * cos(theta);
 
-      double UV_x = (double) v/total_v;
-      double UV_y =  (double) u/total_u;
-
       int index = total_v * u + v;
 
+      // V.row(index) << x, z, y;
       V.row(index) << x, y, z;
-      UV.row(index) << UV_x, UV_y;
+      UV.row(index) << (double) v/total_v, (double) u/total_u;
       NV.row(index) = V.row(index).normalized();
 
       if (u != num_faces_u && v != num_faces_v) {
@@ -54,13 +52,14 @@ void sphere(
         // Calculate the indexes
         int index_1 = v + u * total_v;
         int index_2 = v + (u+1) * total_v;
-        int index_3 = v + (u+1) * total_v + 1;
-        int index_4 = v + u * total_v + 1;
+        int index_3 = index_2 + 1;
+        int index_4 = index_1 + 1;
 
         Eigen::Vector4i indices;
         indices << index_1, index_2, index_3, index_4;
         NF.row(index) = indices;
         UF.row(index) = indices;
+        // UF.row(index) << index_1, index_2, index_3, index_4;
         F.row(index) = indices;
       }
 

@@ -61,7 +61,7 @@ void sphere(
         indices << index_1, index_2, index_3, index_4;
         NF.row(index) = indices;
         UF.row(index) = indices;
-        // UF.row(index) << index_1, index_2, index_3, index_4;
+        // UF.row(index) << index_1, index_3, index_2, index_4;
         F.row(index) = indices;
       }
 

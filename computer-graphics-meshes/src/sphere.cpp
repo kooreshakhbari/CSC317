@@ -48,6 +48,7 @@ void sphere(
       UV.row(index) << (double) v/total_v, (double) u/total_u;
       NV.row(index) = V.row(index).normalized();
 
+      // Seg fault if we don't have this check
       if (u != num_faces_u && v != num_faces_v) {
         index = v + u * num_faces_v;
 

@@ -36,23 +36,22 @@ void cube(
        4, 5, 6, 7; // Right
 
   
-        
   UV.resize(14,2);
 
-  UV << 0, 1, // 1
-        0, 2, // 2
-        1, 0, // 3
-        2, 0, // 4
-        1, 1, // 5
-        2, 1, // 6
-        1, 2, // 7
-        2, 2, // 8
-        1, 3, // 9
-        2, 3, // 10
-        3, 1, // 11
-        3, 2, // 12
-        4, 1, // 13
-        4, 2; // 14
+  UV << 0, 1, // 0
+        0, 2, // 1
+        1, 0, // 2
+        2, 0, // 3
+        1, 1, // 4
+        2, 1, // 5
+        1, 2, // 6
+        2, 2, // 7
+        1, 3, // 8
+        2, 3, // 9
+        3, 1, // 10
+        3, 2, // 11
+        4, 1, // 12
+        4, 2; // 13
 
 
 
@@ -60,32 +59,33 @@ void cube(
 
   UF.resize(6,4);
 
-  UF << 3, 4, 5, 6, // White Bot
-        6, 11, 8, 12, // Blue F
-        1, 2, 5, 7, // Red B
-        7, 9, 10, 8, // Yellow T 
-        5, 7, 6, 4, // Green L
-        11, 12, 13, 14; // Orange R
+  UF << 2, 3, 4, 5, // White Bot
+        5, 10, 7, 11, // Blue F
+        0, 1, 4, 6, // Red B
+        6, 8, 7, 9, // Yellow T 
+        4, 5, 6, 7, // Green L
+        10, 11, 12, 13; // Orange R
+  
   
   NV.resize(6,3);
 
-  NV << -1, 0, 0, // Left face
-         1, 0, 0, // Right face
-         0, 0, 1, // Top face
-         0, 0, -1, // Bottom face
-         0, 1, 0, // Front face
-         0, -1, 0; // Back face
+  NV << 0, 0, -1, // Bottom WHITE 0
+        0, 1, 0, // Front BLUE 1
+        0, -1, 0, // Back RED 2
+        0, 0, 1, // Top YELLOW 3
+        1, 0, 0, // Left GREEN 4 
+        -1, 0, 0; // Right ORANGE 5
 
   
 
   NF.resize(6,4);
 
-  NF << 3, 3, 3, 3, // Bottom
-        4, 4, 4, 4, // Front
-        5, 5, 5, 5, // Back
-        2, 2, 2, 2, // Top
-        0, 0, 0, 0, // Left
-        1, 1, 1, 1; // Right
+  NF << 0, 0, 0, 0, // Bottom WHITE 
+        1, 1, 1, 1, // Front BLUE
+        2, 2, 2, 2, // Back RED
+        3, 3, 3, 3, // Top YELLOW
+        4, 4, 4, 4, // Left GREEN
+        5, 5, 5, 5; // Right ORANGE
         
 
 

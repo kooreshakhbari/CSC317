@@ -61,6 +61,7 @@ void cube(
 
   UF.resize(6,4);
 
+  // The index order matter you need to walk the edges
   UF << 2, 3, 5, 4, // White Bot
         4, 5, 7, 6, // Green L
         10, 11, 13, 12, // Orange R

@@ -10,4 +10,24 @@ void per_vertex_normals(
   ////////////////////////////////////////////////////////////////////////////
   // Add your code here:
   ////////////////////////////////////////////////////////////////////////////
+
+  for (int v=0; v < V.rows(); v++) {
+
+    Eigen::RowVector3d n (0,0,0);
+
+    for (int f=0; f < F.rows(); f++) {
+
+      if (F(f, 0) != v && F(f, 1) != v && F(f, 2) != v) {
+        continue;
+      }
+
+      Eigen::RowVector3d a = V.row(F(f, 0));
+      Eigen::RowVector3d b = V.row(F(f, 1));
+      Eigen::RowVector3d c = V.row(F(f, 2));
+      n += triangle_area_normal(a, b, c);
+
+    }
+
+    N.row(v) << n.normalized();
+  }
 }

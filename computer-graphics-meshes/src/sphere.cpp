@@ -46,6 +46,7 @@ void sphere(
       // Multiply by -1 to make the default start view like the gif
       V.row(index) *= -1;
       UV.row(index) << (double) v/total_v, (double) u/total_u;
+      // Not sure if normalize is needed lol
       NV.row(index) = V.row(index).normalized();
 
       // Seg fault if we don't have this check

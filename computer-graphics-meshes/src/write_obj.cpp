@@ -32,7 +32,7 @@ bool write_obj(
 
   // Normal vectors
   for (int i=0; i < NV.rows(); i++) {
-    file << "vn " << NV(i, 0) << " " << V(i, 1) << " " << V(i, 2) << endl;
+    file << "vn " << NV(i, 0) << " " << NV(i, 1) << " " << NV(i, 2) << endl;
   }
 
   // Faces

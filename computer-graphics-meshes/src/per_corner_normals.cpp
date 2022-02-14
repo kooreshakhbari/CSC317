@@ -34,10 +34,10 @@ void per_corner_normals(
       // Loop through incident faces of this vertex to calculate their normal
       for (int k=0; k < VF[vertex_index].size(); k++) {
         Eigen::RowVector3d incident_n (0,0,0);
-        Eigen::RowVector3d a_comp = V.row(F(k, 0));
-        Eigen::RowVector3d b_comp = V.row(F(k, 1));
-        Eigen::RowVector3d c_comp = V.row(F(k, 2));
-        incident_n = triangle_area_normal(a, b, c);
+        Eigen::RowVector3d a_comp = V.row(F(VF[vertex_index][k], 0));
+        Eigen::RowVector3d b_comp = V.row(F(VF[vertex_index][k], 1));
+        Eigen::RowVector3d c_comp = V.row(F(VF[vertex_index][k], 2));
+        incident_n = triangle_area_normal(a_comp, b_comp, c_comp);
 
         // Check if we pass the threshold
         if (abs(main_n.dot(incident_n)) > abs(threshold)) {

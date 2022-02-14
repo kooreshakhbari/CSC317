@@ -37,32 +37,32 @@ void sphere(
       // Formula from slides
       double x = cos(phi) * sin(theta);
       double y = sin(phi) * sin(theta);
-      double z = cos(theta);
-      double para_x = (double) v/total_v;
-      double para_y =  (double) u/total_u;
+      double z = -1 * cos(theta);
+
+      double UV_x = (double) v/total_v;
+      double UV_y =  (double) u/total_u;
 
       int index = total_v * u + v;
 
       V.row(index) << x, y, z;
-      UV.row(index) << para_x, para_y;
-      NV.row(index) = V.row(index);
+      UV.row(index) << UV_x, UV_y;
+      NV.row(index) = V.row(index).normalized();
 
-      if (u == num_faces_u || v == num_faces_v)
-        continue;
+      if (u != num_faces_u && v != num_faces_v) {
+        index = v + u * num_faces_v;
 
-      index = v + u * num_faces_v;
+        // Calculate the indexes
+        int index_1 = v + u * total_v;
+        int index_2 = v + (u+1) * total_v;
+        int index_3 = v + (u+1) * total_v + 1;
+        int index_4 = v + u * total_v + 1;
 
-      int index_1 = v + u * total_v;
-      int index_2 = v + (u+1) * total_v;
-      int index_3 = v + (u+1) * total_v + 1;
-      int index_4 = v + u * total_v + 1;
-
-      Eigen::Vector4i indices;
-      indices << index_1, index_2, index_3, index_4;
-      NF.row(index) = indices;
-      UF.row(index) = indices;
-      F.row(index) = indices;
-
+        Eigen::Vector4i indices;
+        indices << index_1, index_2, index_3, index_4;
+        NF.row(index) = indices;
+        UF.row(index) = indices;
+        F.row(index) = indices;
+      }
 
     }
   }

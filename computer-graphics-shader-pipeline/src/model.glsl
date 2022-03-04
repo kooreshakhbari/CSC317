@@ -11,6 +11,14 @@ mat4 model(bool is_moon, float time)
 {
   /////////////////////////////////////////////////////////////////////////////
   // Replace with your code 
-  return identity();
+  // The 4 second, 2 translation, and scale came from model view projection comments
+  float theta = ((mod(time, 4.0)*M_PI)/2);
+  if (is_moon) {
+    return rotate_about_y(theta) * translate(vec3(2, 0, 0)) * uniform_scale(0.3);
+  }
+  else {
+    return identity();
+  }
+    
   /////////////////////////////////////////////////////////////////////////////
 }

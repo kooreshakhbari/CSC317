@@ -33,6 +33,7 @@ vec3 improved_smooth_step( vec3 f)
 {
   /////////////////////////////////////////////////////////////////////////////
   // Replace with your code 
-  return f;
+  vec3 answer = vec3(improved_smooth_step(f.x), improved_smooth_step(f.y), improved_smooth_step(f.z));
+  return answer;
   /////////////////////////////////////////////////////////////////////////////
 }

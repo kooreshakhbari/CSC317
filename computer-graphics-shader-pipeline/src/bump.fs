@@ -49,7 +49,8 @@ void main()
   vec3 perceieved_normal;
   perceieved_normal = normalize(cross(bump_pos_T, bump_pos_B));
 
-  if (dot(perceieved_normal, sphere_fs_in) < 0)
+  // Check normal direction
+  if (dot(sphere_fs_in, perceieved_normal) < 0)
     perceieved_normal *= -1;
 
 
@@ -58,17 +59,17 @@ void main()
   vec3 l = normalize((view * light_trans * vec4(3.0, 3.0, 3.0, 0))).xyz;
   
 
-
+// Don't put noise for kd. It will look much better.
   if (is_moon) {
-    vec3 ka = vec3(0.8, 0.4, 0.5);
-    vec3 ks = vec3(2.0, 2.0, 2.0) * noise_moon;
-    vec3 kd = vec3(0.3, 0.3, 0.3) * noise_moon;
+    vec3 ka = vec3(1.8, 1.9, 2.1);
+    vec3 ks = vec3(3.0, 5.0, 2.0) * noise_moon;
+    vec3 kd = vec3(0.3, 0.3, 0.3);
     float p = 1500;
     color = blinn_phong(ka, kd, ks, p, n, v, l);
   } else{
     vec3 ka = vec3(0.5, 0.3, 0.8);
     vec3 ks = vec3(0.8, 0.6, 0.9) * noise_earth;
-    vec3 kd = vec3(0.15, 0.3, 0.8) * noise_earth;
+    vec3 kd = vec3(0.15, 0.3, 0.8);
     float p = 600;
     color = blinn_phong(ka, kd, ks, p, n, v, l);
   }

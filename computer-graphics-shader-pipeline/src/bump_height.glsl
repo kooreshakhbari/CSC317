@@ -12,11 +12,11 @@ float bump_height( bool is_moon, vec3 s)
   // Replace with your code 
 
   if (is_moon) {
-    vec3 moon_seed = vec3(2.66, 4.55, 9.11) + s*2.1;
+    vec3 moon_seed = s*2.1;
     return improved_perlin_noise(moon_seed);
   }
   else {
-    vec3 earth_seed = vec3(5.66, 2.55, 4.11) + s*5.3;
+    vec3 earth_seed = s*4.5;
     return improved_perlin_noise(earth_seed);
   }
 

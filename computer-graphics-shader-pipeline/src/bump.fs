@@ -31,7 +31,7 @@ void main()
     0,0,0,1);
   
   
-  float noise_moon = improved_perlin_noise(43 * sphere_fs_in);
+  float noise_moon = improved_perlin_noise(68465 * sphere_fs_in);
   float noise_earth = improved_perlin_noise(3 * sphere_fs_in);
 
   float epsilion = 0.0001;

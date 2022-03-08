@@ -30,11 +30,35 @@ void main()
     sin(light_theta),0,cos(light_theta),0,
     0,0,0,1);
   
-  vec3 n = normalize(normal_fs_in);
+  
+  float noise_moon = improved_perlin_noise(43 * sphere_fs_in);
+  float noise_earth = improved_perlin_noise(3 * sphere_fs_in);
+
+  float epsilion = 0.0001;
+
+  // Tangent
+  vec3 T, B;
+  tangent(sphere_fs_in, T, B);
+
+  // Bump
+  vec3 bump_pos = bump_position(is_moon, sphere_fs_in);
+  vec3 bump_pos_T = (bump_position(is_moon, sphere_fs_in + T*epsilion) - bump_pos)/epsilion;
+  vec3 bump_pos_B = (bump_position(is_moon, sphere_fs_in + B*epsilion) - bump_pos)/epsilion;
+
+  // From lab readme calculate perceieved normal
+  vec3 perceieved_normal;
+  perceieved_normal = normalize(cross(bump_pos_T, bump_pos_B));
+
+  if (dot(perceieved_normal, sphere_fs_in) < 0)
+    perceieved_normal *= -1;
+
+
+  vec3 n = perceieved_normal;
   vec3 v = -normalize(view_pos_fs_in.xyz);
   vec3 l = normalize((view * light_trans * vec4(3.0, 3.0, 3.0, 0))).xyz;
-  float noise_moon = improved_perlin_noise(43 * bump_position(is_moon, sphere_fs_in));
-  float noise_earth = improved_perlin_noise(3 * bump_position(is_moon, sphere_fs_in));
+  
+
+
   if (is_moon) {
     vec3 ka = vec3(0.8, 0.4, 0.5);
     vec3 ks = vec3(2.0, 2.0, 2.0) * noise_moon;

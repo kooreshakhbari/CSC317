@@ -49,7 +49,7 @@ void main()
   vec3 perceieved_normal;
   perceieved_normal = normalize(cross(bump_pos_T, bump_pos_B));
 
-  // Check normal direction
+  // Check direction
   if (dot(sphere_fs_in, perceieved_normal) < 0)
     perceieved_normal *= -1;
 

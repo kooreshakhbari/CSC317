@@ -7,7 +7,7 @@
 //
 // expects: random_direction, smooth_step
 
-float interpolate(float n0, float n1, float w) {
+float interpolate_cust(float n0, float n1, float w) {
   return (n1 - n0) * w + n0;
 }
 
@@ -24,11 +24,6 @@ float perlin_noise( vec3 st)
   int x1 = x0 + 1;
   int y1 = y0 + 1;
   int z1 = z0 + 1;
-  
-  // Interpolation weights
-  float sx = st.x - (float(x0));
-  float sy = st.y - (float(y0));
-  float sz = st.z - (float(z0));
 
   // All corners points
   vec3 p0 = vec3(x0, y0, z0);
@@ -39,6 +34,12 @@ float perlin_noise( vec3 st)
   vec3 p5 = vec3(x1, y0, z1);
   vec3 p6 = vec3(x1, y1, z0);
   vec3 p7 = vec3(x1, y1, z1);
+
+  // // Interpolation weights
+  // float sx = st.x - (float(x0));
+  // float sy = st.y - (float(y0));
+  // float sz = st.z - (float(z0));
+  vec3 s = smooth_step(st - p0);
 
   // dot gradient with distance vectors
   float n0 = dot(random_direction(p0), st - p0);
@@ -51,15 +52,15 @@ float perlin_noise( vec3 st)
   float n7 = dot(random_direction(p7), st - p7);
 
   // Interpolation
-  float int1 = interpolate(n0, n1, sx);
-  float int2 = interpolate(n2, n3, sx);
-  float int3 = interpolate(n4, n5, sx);
-  float int4 = interpolate(n6, n7, sx);
+  float int1 = interpolate_cust(n0, n1, s.x);
+  float int2 = interpolate_cust(n2, n3, s.x);
+  float int3 = interpolate_cust(n4, n5, s.x);
+  float int4 = interpolate_cust(n6, n7, s.x);
 
-  float int5 = interpolate(int1, int2, sy);
-  float int6 = interpolate(int3, int4, sy);
+  float int5 = interpolate_cust(int1, int2, s.y);
+  float int6 = interpolate_cust(int3, int4, s.y);
 
-  float int7 = interpolate(int5, int6, sz);
+  float int7 = interpolate_cust(int5, int6, s.z);
   return int7;
   /////////////////////////////////////////////////////////////////////////////
 }

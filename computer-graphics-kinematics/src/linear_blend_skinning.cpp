@@ -15,8 +15,8 @@ void linear_blend_skinning(
             if (skeleton[j].weight_index == -1) {
                 continue;
             }
-            Eigen::Vector4d v_1 = Eigen::Vector4d(V(i, 0), V(i, 1), V(i, 2), 1);
-            weight += W(i, skeleton[j].weight_index) * (T[j] * v_1);
+            weight += W(i, skeleton[j].weight_index) *
+                      (T[j] * Eigen::Vector4d(V(i, 0), V(i, 1), V(i, 2), 1));
         }
         U(i, 0) = weight(0);
         U(i, 1) = weight(1);

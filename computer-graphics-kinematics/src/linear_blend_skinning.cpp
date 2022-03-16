@@ -7,7 +7,7 @@ void linear_blend_skinning(
     const Eigen::MatrixXd& W, Eigen::MatrixXd& U) {
     /////////////////////////////////////////////////////////////////////////////
     // Replace with your code
-    // Formula is wij * tj * (vi, 1)
+    // Formula is wij * tj * (vi, 1) from handout
     U.resize(V.rows(), V.cols());
     for (int i = 0; i < V.rows(); i++) {
         Eigen::Vector4d weight = Eigen::Vector4d::Zero();

@@ -14,12 +14,42 @@ void end_effectors_objective_and_gradient(
     std::function<void(Eigen::VectorXd &)> &proj_z) {
     /////////////////////////////////////////////////////////////////////////////
     // Replace with your code
-    f = [&](const Eigen::VectorXd &A) -> double { return 0.0; };
+    f = [&](const Eigen::VectorXd &A) -> double {
+        Eigen::VectorXd trans_tips =
+            transformed_tips(copy_skeleton_at(skeleton, A), b);
+
+        double val = (trans_tips - xb0).squaredNorm();
+
+        return val;
+    };
+
     grad_f = [&](const Eigen::VectorXd &A) -> Eigen::VectorXd {
-        return Eigen::VectorXd::Zero(A.size());
+        Eigen::VectorXd trans_tips =
+            transformed_tips(copy_skeleton_at(skeleton, A), b);
+
+        Eigen::VectorXd E;
+
+        Eigen::MatrixXd J;
+        kinematics_jacobian(copy_skeleton_at(skeleton, A), b, J);
+
+        for (int i = 0; i < trans_tips.size(); i++) {
+            E[i] = 2 * (trans_tips[i] - xb0[i]);
+        }
+
+        return J.transpose() * E;
     };
     proj_z = [&](Eigen::VectorXd &A) {
-        assert(skeleton.size() * 3 == A.size());
+        // assert(skeleton.size() * 3 == A.size());
+
+        for (int i = 0; i < skeleton.size(); i++) {
+            Bone bone = skeleton[i];
+            A[i * 3] =
+                std::max(bone.xzx_min[0], std::min(A[i * 3], bone.xzx_max[0]));
+            A[i * 3 + 1] = std::max(bone.xzx_min[1],
+                                    std::min(A[i * 3 + 1], bone.xzx_max[1]));
+            A[i * 3 + 2] = std::max(bone.xzx_min[2],
+                                    std::min(A[i * 3 + 2], bone.xzx_max[2]));
+        }
     };
     /////////////////////////////////////////////////////////////////////////////
 }

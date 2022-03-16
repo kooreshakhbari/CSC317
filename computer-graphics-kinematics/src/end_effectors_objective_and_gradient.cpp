@@ -14,6 +14,7 @@ void end_effectors_objective_and_gradient(
     std::function<void(Eigen::VectorXd &)> &proj_z) {
     /////////////////////////////////////////////////////////////////////////////
     // Replace with your code
+    // Formulas in handout of lab
     f = [&](const Eigen::VectorXd &A) -> double {
         Eigen::VectorXd trans_tips =
             transformed_tips(copy_skeleton_at(skeleton, A), b);
@@ -39,7 +40,7 @@ void end_effectors_objective_and_gradient(
         return J.transpose() * E;
     };
     proj_z = [&](Eigen::VectorXd &A) {
-        // assert(skeleton.size() * 3 == A.size());
+        assert(skeleton.size() * 3 == A.size());
 
         for (int i = 0; i < skeleton.size(); i++) {
             Bone bone = skeleton[i];

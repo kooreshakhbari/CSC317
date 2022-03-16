@@ -27,12 +27,12 @@ void end_effectors_objective_and_gradient(
         Eigen::VectorXd trans_tips =
             transformed_tips(copy_skeleton_at(skeleton, A), b);
 
-        Eigen::VectorXd E;
+        Eigen::VectorXd E(b.size() * 3);
 
         Eigen::MatrixXd J;
         kinematics_jacobian(copy_skeleton_at(skeleton, A), b, J);
 
-        for (int i = 0; i < trans_tips.size(); i++) {
+        for (int i = 0; i < b.size() * 3; i++) {
             E[i] = 2 * (trans_tips[i] - xb0[i]);
         }
 

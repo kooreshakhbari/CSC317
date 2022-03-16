@@ -20,6 +20,20 @@ Bone.h
 vector
 -
 
+../include/copy_skeleton_at.h
+Skeleton.h
+../include/Skeleton.h
+Eigen/Core
+-
+
+../include/end_effectors_objective_and_gradient.h
+Eigen/Core
+-
+functional
+-
+Skeleton.h
+../include/Skeleton.h
+
 ../include/kinematics_jacobian.h
 Eigen/Core
 -
@@ -32,11 +46,15 @@ Skeleton.h
 Eigen/Core
 -
 
-/home/kooresh/CSC317/computer-graphics-kinematics/src/kinematics_jacobian.cpp
-kinematics_jacobian.h
-/home/kooresh/CSC317/computer-graphics-kinematics/src/kinematics_jacobian.h
+/home/kooresh/CSC317/computer-graphics-kinematics/src/end_effectors_objective_and_gradient.cpp
+end_effectors_objective_and_gradient.h
+/home/kooresh/CSC317/computer-graphics-kinematics/src/end_effectors_objective_and_gradient.h
 iostream
 -
+copy_skeleton_at.h
+/home/kooresh/CSC317/computer-graphics-kinematics/src/copy_skeleton_at.h
+kinematics_jacobian.h
+/home/kooresh/CSC317/computer-graphics-kinematics/src/kinematics_jacobian.h
 transformed_tips.h
 /home/kooresh/CSC317/computer-graphics-kinematics/src/transformed_tips.h
 

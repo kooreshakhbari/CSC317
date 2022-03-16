@@ -33,9 +33,7 @@ void end_effectors_objective_and_gradient(
         Eigen::MatrixXd J;
         kinematics_jacobian(copy_skeleton_at(skeleton, A), b, J);
 
-        for (int i = 0; i < b.size() * 3; i++) {
-            E[i] = 2 * (trans_tips[i] - xb0[i]);
-        }
+        E = (trans_tips - xb0) * 2;
 
         return J.transpose() * E;
     };

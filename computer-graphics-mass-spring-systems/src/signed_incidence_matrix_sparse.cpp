@@ -8,8 +8,8 @@ void signed_incidence_matrix_sparse(const int n, const Eigen::MatrixXi& E,
   // Replace with your code
   std::vector<Eigen::Triplet<double> > ijv;
 
-  for (int i = 0; i < A.rows(); i++) {
-    for (int j = 0; j < A.cols(); j++) {
+  for (int i = 0; i < E.rows(); i++) {
+    for (int j = 0; j < n; j++) {
       if (j == E(i, 0)) {
         ijv.emplace_back(i, E(i, 0), 1);
       } else if (j == E(i, 1)) {

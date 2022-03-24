@@ -33,6 +33,7 @@ void fast_mass_springs_step_dense(
       d.row(i) *= r[i];
     }
 
+    // From lab handout
     l = k * A.transpose() * d + y + w * C.transpose() * C * V;
     Unext = prefactorization.solve(l);
   }

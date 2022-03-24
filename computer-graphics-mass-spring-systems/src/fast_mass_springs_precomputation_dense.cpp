@@ -22,7 +22,7 @@ bool fast_mass_springs_precomputation_dense(
     r[i] = (V.row(index_0) - V.row(index_1)).norm();
   }
 
-  // Create M
+  // Create M - along diagnol
   M = Eigen::MatrixXd::Zero(V.rows(), V.rows());
   for (int i = 0; i < M.rows(); i++) {
     M(i, i) = m[i];
@@ -37,6 +37,7 @@ bool fast_mass_springs_precomputation_dense(
     C(i, b[i]) = 1;
   }
 
+  // From lab handout
   Q = k * A.transpose() * A + M / pow(delta_t, 2) + w * C.transpose() * C;
 
   prefactorization.compute(Q);

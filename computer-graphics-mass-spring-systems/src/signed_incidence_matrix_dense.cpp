@@ -7,6 +7,7 @@ void signed_incidence_matrix_dense(const int n, const Eigen::MatrixXi& E,
   A = Eigen::MatrixXd::Zero(E.rows(), n);
   //////////////////////////////////////////////////////////////////////////////
 
+  // Refer to lab handout
   for (int i = 0; i < A.rows(); i++) {
     for (int j = 0; j < A.cols(); j++) {
       if (j == E(i, 0)) {

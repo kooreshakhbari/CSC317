@@ -23,9 +23,7 @@ void fast_mass_springs_step_sparse(
 
         // Calc dij
         for (int i = 0; i < E.rows(); i++) {
-            int index_0 = E(i, 0);
-            int index_1 = E(i, 1);
-            d.row(i) = (Unext.row(index_0) - Unext.row(index_1)).normalized();
+            d.row(i) = (Unext.row(E(i, 0)) - Unext.row(E(i, 1))).normalized();
             d.row(i) *= r[i];
         }
 

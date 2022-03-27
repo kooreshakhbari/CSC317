@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/masssprings_sparse.dir/main.cpp.o"
-  "CMakeFiles/masssprings_sparse.dir/main.cpp.o.d"
   "masssprings_sparse"
   "masssprings_sparse.pdb"
 )

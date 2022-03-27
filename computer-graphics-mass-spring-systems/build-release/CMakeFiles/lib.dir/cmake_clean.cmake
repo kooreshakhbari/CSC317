@@ -1,16 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/lib.dir/src/fast_mass_springs_precomputation_dense.cpp.o"
-  "CMakeFiles/lib.dir/src/fast_mass_springs_precomputation_dense.cpp.o.d"
   "CMakeFiles/lib.dir/src/fast_mass_springs_precomputation_sparse.cpp.o"
-  "CMakeFiles/lib.dir/src/fast_mass_springs_precomputation_sparse.cpp.o.d"
   "CMakeFiles/lib.dir/src/fast_mass_springs_step_dense.cpp.o"
-  "CMakeFiles/lib.dir/src/fast_mass_springs_step_dense.cpp.o.d"
   "CMakeFiles/lib.dir/src/fast_mass_springs_step_sparse.cpp.o"
-  "CMakeFiles/lib.dir/src/fast_mass_springs_step_sparse.cpp.o.d"
   "CMakeFiles/lib.dir/src/signed_incidence_matrix_dense.cpp.o"
-  "CMakeFiles/lib.dir/src/signed_incidence_matrix_dense.cpp.o.d"
   "CMakeFiles/lib.dir/src/signed_incidence_matrix_sparse.cpp.o"
-  "CMakeFiles/lib.dir/src/signed_incidence_matrix_sparse.cpp.o.d"
   "liblib.a"
   "liblib.pdb"
 )

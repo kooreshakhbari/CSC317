@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/igl_stb_image.dir/igl_stb_image.cpp.o"
-  "CMakeFiles/igl_stb_image.dir/igl_stb_image.cpp.o.d"
   "libigl_stb_image.a"
   "libigl_stb_image.pdb"
 )
